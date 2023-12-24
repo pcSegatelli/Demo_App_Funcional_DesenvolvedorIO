@@ -59,7 +59,7 @@ namespace AppMvcFuncional.Controllers
             return View(aluno);
         }
 
-        [HttpPost("editar/{id:int}")]
+        [Route("editar/{id:int}")]
         public async Task<IActionResult> Edit(int id)
         {
             if (_context.Aluno == null)
@@ -83,6 +83,8 @@ namespace AppMvcFuncional.Controllers
             {
                 return NotFound();
             }
+
+            ModelState.Remove("EmailConfirmacao");
 
             if (ModelState.IsValid)
             {
